@@ -24,7 +24,7 @@ class ProductController extends Controller
         $product = new Product();
         $product->name = "Butter";
         $product->product_type()->associate(productType::find(1));
-        $product->unit()->associate(Unit::find(2));
+        $product->unit()->associate(Unit::find(1));
         $product->price =100;
         $product->supplier()->associate(Supplier::find(1));
         $product->save();

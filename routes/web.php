@@ -16,10 +16,21 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::resource('/customers', 'CustomersController');
+Route::resource('/products', 'ProductsController');
+Route::resource('/suppliers', 'SuppliersController');
+Route::resource('/units', 'UnitsController');
+Route::resource('/types', 'TypesController');
+
+
+
+/*
 
 Route::get('/products','ProductController@store')->name('view');
 Route::get('/addProducts',function (){
     return view('products.addProducts');
 });
+Route::get('/suppliers', 'suppliersController@index');*/

@@ -1,13 +1,32 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>View All Products</title>
-</head>
-<body>
+@extends('layouts.app')
 
-</body>
-</html>
+@section('content')
+    <div class="container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Address</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($products as $product)
+                <tr>
+                    <td>{{$product}}</td>
+                    <td>{{$product}}</td>
+                    <td>{{$product}}</td>
+                    <td>{{$product}}</td>
+                    <td>
+                        <a href="/customers/{{$product->id}}" class="btn btn btn-info">Delete</a>
+                    </td>
+                    <td>
+                        <a href="/customers/{{$product->id}}" class="btn btn btn-info">Edit</a>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
+@endsection
