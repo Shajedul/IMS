@@ -22,7 +22,7 @@
                         <a href="/customers/{{$product->id}}" class="btn btn btn-info">Delete</a>
                     </td>
                     <td>
-                        <a href="/customers/{{$product->id}}" class="btn btn btn-info">Edit</a>
+                        <a href="/customers/{{ $product->id }}" class="btn btn btn-info">Edit</a>
                     </td>
                 </tr>
             @endforeach
