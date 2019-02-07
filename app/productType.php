@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Product_type extends Model
+class productType extends Model
 {
-    public function product()
+    public function products()
     {
         return $this->hasMany(Product::class);
     }

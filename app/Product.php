@@ -9,7 +9,7 @@ class Product extends Model
 {
     public function product_type()
     {
-        return $this->belongsTo(Product_type::class);
+        return $this->belongsTo(ProductType::class);
     }
 
     public function unit()
@@ -17,7 +17,7 @@ class Product extends Model
         return $this->belongsTo(Unit::class);
     }
 
-    public  function suppliers()
+    public  function supplier()
     {
         return $this->belongsTo(Product::class);
     }
