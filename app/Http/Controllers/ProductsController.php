@@ -23,17 +23,23 @@ class ProductsController extends Controller
             $i++;
         }
 
-        dd($product_type);
-        return view('products.viewProducts', compact('products'));
+        //dd($product_type);
+        return view('products.viewProduct', compact('products') , $product_type);
     }
     public function create()
     {
-        $product = new Product();
+        $product_types = productType::all('id' , 'name');
+        //dd($product_types);
+        $units = Unit::all('id' , 'name');
+        $suppliers = Supplier::all('id' , 'name');
+        return view('products.addProducts' , compact('suppliers' , 'units' , 'product_types'));
+
+       /* $product = new Product();
         $product->name = "Butter";
         $product->product_type()->associate(productType::find(1));
         $product->unit()->associate(Unit::find(1));
         $product->price =100;
         $product->supplier()->associate(Supplier::find(1));
-        $product->save();
+        $product->save();*/
     }
 }
