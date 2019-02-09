@@ -35,23 +35,12 @@ class ProductsController extends Controller
         $suppliers = Supplier::all('id' , 'name');
         return view('products.addProducts' , compact('suppliers' , 'units' , 'product_types'));
 
-       /* $product = new Product();
-        $product->name = "Butter";
-        $product->product_type()->associate(productType::find(1));
-        $product->unit()->associate(Unit::find(1));
-        $product->price =100;
-        $product->supplier()->associate(Supplier::find(1));
-        $product->save();*/
     }
     public function store(Request $request)
     {
 
         $product = new Product();
-        //$temp = request()->all();
-        //return $temp;
-        return $product->addProducts($request);
-
-
-
+        $product->addProducts($request);
+        return back();
     }
 }
