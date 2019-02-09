@@ -2,6 +2,12 @@
 
 @section('content')
     <div class="container">
+        <div class="form-group">
+            <label for="add-new-product">Add New Product</label>
+            <a href="/products/create" class="btn btn-info" id="add-new-product">
+                    +
+            </a>
+        </div>
         <table class="table">
             <thead>
             <tr>
@@ -10,8 +16,8 @@
                 <th>Unit name</th>
                 <th>Supplier</th>
                 <th>Price</th>
-                <th>Edit item</th>
-                <th>Delete Item</th>
+                <th>Delete item</th>
+                <th>Edit Item</th>
             </tr>
             </thead>
             <tbody>
@@ -23,10 +29,18 @@
                     <td>{{App\Supplier::find($product->supplier_id)->name}}</td>
                     <td>{{$product->price}}</td>
                     <td>
-                        <a href="/customers/{{$product->id}}" class="btn btn btn-info">Delete</a>
+                        <form method="post" action="/products/{{$product->id}}">
+                            @csrf
+                            {{method_field('delete')}}
+                            <button type="submit" class="btn btn btn-info">Delete</button>
+                        </form>
+
                     </td>
                     <td>
-                        <a href="/customers/{{$product->id}}" class="btn btn btn-info">Edit</a>
+                        <form method="get" action="/products/{{$product->id}}/edit">
+                            @csrf
+                            <button type="submit" class="btn btn btn-info">Edit</button>
+                        </form>
                     </td>
                 </tr>
             @endforeach

@@ -7,6 +7,7 @@ use App\productType;
 use App\Supplier;
 use App\Unit;
 use function GuzzleHttp\Promise\all;
+use http\Exception\InvalidArgumentException;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
@@ -29,18 +30,35 @@ class ProductsController extends Controller
     }
     public function create()
     {
+        $product =null;
         $product_types = productType::all('id' , 'name');
         //dd($product_types);
         $units = Unit::all('id' , 'name');
         $suppliers = Supplier::all('id' , 'name');
-        return view('products.addProducts' , compact('suppliers' , 'units' , 'product_types'));
+        return view('products.addProducts' , compact('suppliers' , 'units' , 'product_types' , 'product'));
 
     }
     public function store(Request $request)
     {
-
         $product = new Product();
         $product->addProducts($request);
-        return back();
+        return redirect('products');
+    }
+    public function edit(Product $product)
+    {
+        $product_types = productType::all('id' , 'name');
+        $units = Unit::all('id' , 'name');
+        $suppliers = Supplier::all('id' , 'name');
+        return view('products.addProducts' , compact('suppliers' , 'units' , 'product_types', 'product'));
+    }
+    public  function update(Product $product , Request $request)
+    {
+        //return $request;
+        $product->editProduct($product, $request);
+    }
+    public function destroy(Product $product)
+    {
+        //return $product;
+        $product->deleteProduct();
     }
 }
