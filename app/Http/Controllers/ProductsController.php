@@ -6,6 +6,7 @@ use App\Product;
 use App\productType;
 use App\Supplier;
 use App\Unit;
+use function GuzzleHttp\Promise\all;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
@@ -41,5 +42,15 @@ class ProductsController extends Controller
         $product->price =100;
         $product->supplier()->associate(Supplier::find(1));
         $product->save();*/
+    }
+    public function store(Request $request)
+    {
+
+        $product = new Product();
+        //$temp = request()->all();
+        //return $temp;
+        $product->addProducts($request);
+
+
     }
 }

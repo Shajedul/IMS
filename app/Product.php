@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use app\Product_type;
+use Illuminate\Http\Request;
 
 class Product extends Model
 {
@@ -20,6 +21,11 @@ class Product extends Model
     public  function supplier()
     {
         return $this->belongsTo(Product::class);
+    }
+    public function addProducts($request)
+    {
+        //$product = new Product();
+        echo $request;
     }
 
 }

@@ -17,8 +17,9 @@ class ProductController extends Controller
 
         return $product;
     }
-    public function store( )
+    public function store(Request $request)
     {
+
 
         //dd(Product_type::find(1));
         $product = new Product();
