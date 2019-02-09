@@ -49,7 +49,8 @@ class ProductsController extends Controller
         $product = new Product();
         //$temp = request()->all();
         //return $temp;
-        $product->addProducts($request);
+        return $product->addProducts($request);
+
 
 
     }

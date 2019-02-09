@@ -24,8 +24,20 @@ class Product extends Model
     }
     public function addProducts($request)
     {
-        //$product = new Product();
-        echo $request;
+        //dd('Hit me');
+        //return $request;
+        $product = new Product();
+        $product->name = $request['product_name'];
+        $product->product_type()->associate(productType::find($request['product_type']));
+        $product->unit()->associate(Unit::find(($request['unit'])));
+        $product->price = $request['price'];
+        $product->supplier()->associate(Supplier::find($request['supplier']));
+        $product->quantity = $request['quantity'];
+        $product->description = $request['description'];
+        //dd($product);
+        $product->save();
+        return redirect('/products/create');
+
     }
 
 }
