@@ -85,6 +85,7 @@
                 <div class="links">
                     <a href="/">Home</a>
                     <a href="/products">Products</a>
+                    <a href="/customers">Customers</a>
                     <a href="/suppliers">Suppliers</a>
                     <a href="/sale">Sell Items</a>
                 </div>
