@@ -19,10 +19,17 @@
                 <td>{{$customer->email}}</td>
                 <td>{{$customer->address}}</td>
                 <td>
-                    <a href="/customers/{{$customer->id}}" class="btn btn btn-info">Delete</a>
+                    <form method="post" action="/customers/{{$customer->id}}">
+                        @csrf
+                        {{method_field('delete')}}
+                        <button type="submit" class="btn btn btn-info">Delete</button>
+                    </form>
                 </td>
                 <td>
-                    <a href="/customers/{{$customer->id}}" class="btn btn btn-info">Edit</a>
+                    <form method="get" action="/customers/{{$customer->id}}/edit">
+                        @csrf
+                        <button type="submit" class="btn btn btn-info">Edit</button>
+                    </form>
                 </td>
             </tr>
             @endforeach

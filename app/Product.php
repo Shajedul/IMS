@@ -24,8 +24,51 @@ class Product extends Model
     }
     public function addProducts($request)
     {
+        $request->validate([
+            'product_name' => 'required',
+            'quantity' => 'required|numeric',
+            'price' => 'required|numeric'
+        ]);
+        $product = new Product();
+        $product->name = $request['product_name'];
+        $product->product_type()->associate(productType::find($request['product_type']));
+        $product->unit()->associate(Unit::find(($request['unit'])));
+        $product->price = $request['price'];
+        $product->supplier()->associate(Supplier::find($request['supplier']));
+        $product->quantity = $request['quantity'];
+        $product->description = $request['description'];
+        //dd($product);
+        $product->save();
+        return redirect('/products/create');
+
+    }
+    public function editProduct($product , $request)
+    {
+        $request->validate([
+            'product_name' => 'required',
+            'quantity' => 'required|numeric',
+            'price' => 'required|numeric'
+        ]);
         //$product = new Product();
-        echo $request;
+        $product->name = $request['product_name'];
+        $product->product_type()->associate(productType::find($request['product_type']));
+        $product->unit()->associate(Unit::find(($request['unit'])));
+        $product->price = $request['price'];
+        $product->supplier()->associate(Supplier::find($request['supplier']));
+        $product->quantity = $request['quantity'];
+        $product->description = $request['description'];
+        //dd($product);
+        $product->save();
+        return redirect('/products/create');
+
+    }
+    public function deleteProduct()
+    {
+        $this->delete();
+    }
+    public function invoice()
+    {
+        return $this->hasMany(Product::class);
     }
 
 }
