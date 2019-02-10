@@ -37,6 +37,7 @@ class suppliersController extends Controller
         $supplier->email = \request('email');
         $supplier->phone = \request('phone');
         $supplier->save();
+        return redirect('/suppliers');
     }
     public function edit(Supplier $supplier)
     {
@@ -54,9 +55,11 @@ class suppliersController extends Controller
         $supplier->email = \request('email');
         $supplier->phone = \request('phone');
         $supplier->save();
+        return redirect('/suppliers');
     }
     public function destroy(Supplier $supplier)
     {
         $supplier->delete();
+        return redirect('/suppliers');
     }
 }

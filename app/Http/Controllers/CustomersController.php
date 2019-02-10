@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use function Sodium\compare;
 
 class CustomersController extends Controller
 {
@@ -29,13 +30,16 @@ class CustomersController extends Controller
     {
         $customer = new Customer();
         $customer->addCustomer($request);
+        return redirect('/customers');
     }
     public function update(Customer $customer)
     {
         $customer->updateCustomer();
+        return redirect('/customers');
     }
     public function destroy(Customer $customer)
     {
         $customer->deleteCustomer();
+        return redirect('/customers');
     }
 }
