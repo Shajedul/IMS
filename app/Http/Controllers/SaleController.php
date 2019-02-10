@@ -41,6 +41,7 @@ class SaleController extends Controller
         $invoice = new Invoice();
         $sale_id =$sale->storeSale($request);
         $invoice->storeInvoice($request,$sale_id);
+        return redirect('/sale');
         //dd($request->all());
     }
 }

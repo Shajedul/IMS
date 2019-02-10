@@ -60,5 +60,6 @@ class ProductsController extends Controller
     {
         //return $product;
         $product->deleteProduct();
+        return redirect('/products');
     }
 }
