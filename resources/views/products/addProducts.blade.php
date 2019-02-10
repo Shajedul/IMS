@@ -2,6 +2,27 @@
 
 @section('content')
     <div class="container">
+        <div id="hidden_form_unit">
+            <form method="post" action="/units" >
+                @csrf
+                <div class="form-row">
+                    <label for="unit">insert</label>
+                    <input class="form-control" type="text" name="new_unit" id="unit">
+                    <button class="btn btn-info" type="submit">Add unit</button>
+                </div>
+            </form>
+        </div>
+        <div id="hidden_form_type">
+            <form method="post" action="/types" >
+                @csrf
+                <div class="form-row">
+                    <label for="type">insert</label>
+                    <input class="form-control" type="text" name="new_type" id="type">
+                    <button class="btn btn-info" type="submit">Add Type</button>
+                </div>
+            </form>
+        </div>
+
         <form method="post" action="{{$product==null?"/products":"/products/".$product->id}}">
             {{csrf_field()}}
             @if(!$product==null)
@@ -35,8 +56,8 @@
                         </div>
 
                         <div class="form-group col-md-2">
-                            <label for="add_link" >Add New</label>
-                            <a class="btn btn-info" name="" id="add_link">+</a>
+                            <label for="add-type" >Add New</label>
+                            <button class="btn btn-info" name="add_unit" id="add-type" >+</button>
                         </div>
                     </div>
 
@@ -50,16 +71,8 @@
                             </select>
                         </div>
                         <div class="form-group col-md-2">
-                            <label for="add_link" >Add New</label>
-                            <button class="btn btn-info" name="add_unit" id="addLink" >+</button>
-                            {{--<div id="hidden_form">
-                                <form id="hidden_unit_form" >
-                                    <div class="form-row">
-                                        <label for="submit-unit">insert</label>
-                                        <input class="form-control" type="text" name="new_unit" id="submit-unit">
-                                    </div>
-                                </form>
-                            </div>--}}
+                            <label for="add-unit" >Add New</label>
+                            <button class="btn btn-info" name="add_unit" id="add-unit" >+</button>
                         </div>
                     </div>
 
@@ -83,8 +96,8 @@
                             </select>
                         </div>
                         <div class="form-group col-md-2">
-                            <label for="add_link">Add New</label>
-                            <a class="btn btn-info" name="" id="add_link">+</a>
+                            <label for="add-supplier" >Add New</label>
+                            <a class="btn btn-info" href="/suppliers/create" id="add-supplier" >+</a>
                         </div>
                     </div>
 
@@ -101,12 +114,17 @@
                 </div>
         </form>
 
- {{--   <script>
+    <script>
         $(document).ready(function(){
-            $('#hidden_form').slideUp();
-            $('#addLink').click(function(){
-                $('#hidden_form').slideToggle();
+            $('#hidden_form_unit').slideUp();
+            $('#hidden_form_type').slideUp();
+            $('#add-unit').click(function(){
+                $('#hidden_form_unit').slideToggle();
             });
+            $('#add-type').click(function(){
+                $('#hidden_form_type').slideToggle();
+            });
+
         });
-    </script>--}}
+    </script>
 @endsection
