@@ -26,7 +26,7 @@
                     <td>{{$product->name}}</td>
                     <td>{{App\productType::find($product->product_type_id)->name}}</td>
                     <td>{{App\Unit::find($product->unit_id)->name}}</td>
-                    <td>{{App\Supplier::find($product->supplier_id)->name}}</td>
+                    <td>{{\App\Supplier::find($product->supplier_id)->name}}</td>
                     <td>{{$product->price}}</td>
                     <td>
                         <form method="post" action="/products/{{$product->id}}">

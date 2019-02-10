@@ -2,6 +2,12 @@
 
 @section('content')
     <div class="container">
+        <div class="form-group">
+            <label for="add-new-product">New Supplier</label>
+            <a href="/suppliers/create" class="btn btn-info" id="add-new-product">
+                +
+            </a>
+        </div>
         <table class="table">
             <thead>
             <tr>

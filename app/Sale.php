@@ -14,4 +14,19 @@ class Sale extends Model
     {
         return $this->hasMany(Invoice::class);
     }
+    public function storeSale ($request)
+    {
+        //dd($request['C']);
+        $grandTotal = 0;
+
+       $this->customer()->associate(Customer::find($request['Customer_name']));
+       foreach ($request['total_price'] as $price)
+       {
+           $grandTotal=$price+$grandTotal;
+       }
+       $this->total = $grandTotal;
+       $this->save();
+       return $this->id;
+
+    }
 }

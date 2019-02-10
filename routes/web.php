@@ -19,6 +19,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
+Route::group(['middleware' => 'auth'], function () {
+
 Route::resource('/customers', 'CustomersController');
 Route::resource('/products', 'ProductsController');
 Route::resource('/suppliers', 'SuppliersController');
@@ -27,7 +29,7 @@ Route::resource('/types', 'TypesController');
 Route::resource('/sale' , 'SaleController');
 Route::post('/sale/ajax' , 'SaleController@addToCart');
 
-
+});
 
 /*
 

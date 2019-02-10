@@ -17,6 +17,7 @@ class CreateSalesTable extends Migration
 
             $table->increments('id');
             $table->integer('customer_id');
+            $table->float('total');
             $table->timestamps();
 
         });
