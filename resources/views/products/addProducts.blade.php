@@ -66,11 +66,11 @@
 
                 <div class="form-group">
                         <label for="product-quantity">Quantity</label>
-                        <input  type="text" name="quantity" class="form-control" id="product-quantity" required value="{{ $product==null?old('product_name'):$product->quantity}}">
+                        <input  type="text" name="quantity" class="form-control" id="product-quantity" required value="{{ $product==null?old('quantity'):$product->quantity}}">
                 </div>
                     <div class="form-group">
                         <label for="product-price">Per Unit price</label>
-                        <input class="form-control" name="price" id="product-price" type="text" required value="{{ $product==null?old('product_name'):$product->price}}">
+                        <input class="form-control" name="price" id="product-price" type="text" required value="{{ $product==null?old('price'):$product->price}}">
                     </div>
 
                     <div class="form-row">
@@ -91,7 +91,7 @@
 
                     <div class="form-group">
                         <label for="product-description">Description of the product</label>
-                        <textarea name="description" class="form-control" id="product-description" rows="3" >{{ $product==null?old('product_name'):$product->description}}</textarea>
+                        <textarea name="description" class="form-control" id="product-description" rows="3" >{{ $product==null?old('description'):$product->description}}</textarea>
                     </div>
 
                     <div class="form-group">

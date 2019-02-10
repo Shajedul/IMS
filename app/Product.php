@@ -66,5 +66,9 @@ class Product extends Model
     {
         $this->delete();
     }
+    public function invoice()
+    {
+        return $this->hasMany(Product::class);
+    }
 
 }
