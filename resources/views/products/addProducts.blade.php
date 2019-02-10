@@ -38,15 +38,15 @@
                         </div>
                         <div class="form-group col-md-2">
                             <label for="add_link" >Add New</label>
-                            <button class="btn btn-info" name="add_unit" id="addLink" >+</button>
-                            {{--<div id="hidden_form">
+                            <button type="button" class="btn btn-info" name="add_unit" id="addUnit" >+</button>
+                            <div id="hidden_form">
                                 <form id="hidden_unit_form" >
                                     <div class="form-row">
                                         <label for="submit-unit">insert</label>
                                         <input class="form-control" type="text" name="new_unit" id="submit-unit">
                                     </div>
                                 </form>
-                            </div>--}}
+                            </div>
                         </div>
                     </div>
 
@@ -89,12 +89,12 @@
 
         </form>
     </div>
- {{--   <script>
+    <script>
         $(document).ready(function(){
             $('#hidden_form').slideUp();
-            $('#addLink').click(function(){
+            $('#addUnit').click(function(){
                 $('#hidden_form').slideToggle();
             });
         });
-    </script>--}}
+    </script>
 @endsection
