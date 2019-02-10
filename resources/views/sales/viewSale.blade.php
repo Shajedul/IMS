@@ -3,8 +3,8 @@
 @section('content')
     <div class="container">
         <div class="form-group">
-            <label for="add-new-product">Add New Product</label>
-            <a href="/products/create" class="btn btn-info" id="add-new-product">
+            <label for="add-new-product">New Sale</label>
+            <a href="/sale/create" class="btn btn-info" id="add-new-product">
                 +
             </a>
         </div>
