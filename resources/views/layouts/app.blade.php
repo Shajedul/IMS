@@ -11,7 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script
+    {{--<script--}}
 {{--        src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>--}}
@@ -32,6 +32,20 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
+                @if(auth()->check())
+                    <a class="navbar-brand" href="{{ url('/products') }}">
+                        {{ "Products" }}
+                    </a>
+                    <a class="navbar-brand" href="{{ url('/customers') }}">
+                        {{ "Customers" }}
+                    </a>
+                    <a class="navbar-brand" href="{{ url('/suppliers') }}">
+                        {{ "Suppliers" }}
+                    </a>
+                    <a class="navbar-brand" href="{{ url('/sale') }}">
+                        {{ "Sale"}}
+                    </a>
+                @endif
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
