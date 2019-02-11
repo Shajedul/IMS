@@ -11,7 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script
+    {{--<script--}}
 {{--        src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>--}}
@@ -30,8 +30,25 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ " Home" }}
                 </a>
+                <a class="navbar-brand" href="{{ url('/home') }}">
+                    {{ " Dashboard" }}
+                </a>
+               {{-- @if(auth()->check())
+                    <a class="navbar-brand" href="{{ url('/products') }}">
+                        {{ "Products" }}
+                    </a>
+                    <a class="navbar-brand" href="{{ url('/customers') }}">
+                        {{ "Customers" }}
+                    </a>
+                    <a class="navbar-brand " href="{{ url('/suppliers') }}">
+                        {{ "Suppliers" }}
+                    </a>
+                    <a class="navbar-brand " href="{{ url('/sale') }}">
+                        {{ "Sale"}}
+                    </a>
+                @endif--}}
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -45,6 +62,20 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                        @if(auth()->check())
+                            <a class="text-muted navbar-brand" href="{{ url('/products') }}">
+                                {{ "Products" }}
+                            </a>
+                            <a class="text-muted navbar-brand" href="{{ url('/customers') }}">
+                                {{ "Customers" }}
+                            </a>
+                            <a class="text-muted navbar-brand " href="{{ url('/suppliers') }}">
+                                {{ "Suppliers" }}
+                            </a>
+                            <a class="text-muted navbar-brand" href="{{ url('/sale') }}">
+                                {{ "Sale"}}
+                            </a>
+                        @endif
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -56,7 +87,7 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="navbar-brand text-muted dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
