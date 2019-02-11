@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DashBoard;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $dashboard = new DashBoard();
+        $totalPrice=$dashboard->todaysTotalSale();
+        $sales =$dashboard->lastSales();
+        $totalSales =$dashboard->numberOfSale();
+        $highestSale= max(array_column($totalSales->all(), 'total'));
+        $totalSales = sizeof($totalSales);
+        return view('home' , compact('totalPrice', 'sales', 'totalSales' ,'highestSale'));
     }
 }
