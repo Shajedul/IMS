@@ -28,8 +28,17 @@ class HomeController extends Controller
         $totalPrice=$dashboard->todaysTotalSale();
         $sales =$dashboard->lastSales();
         $totalSales =$dashboard->numberOfSale();
-        $highestSale= max(array_column($totalSales->all(), 'total'));
-        $totalSales = sizeof($totalSales);
+        if($totalSales->all()==null)
+        {
+            $highestSale='N/A';
+            $totalSales  ='N/A';
+        }
+        else
+        {
+            $highestSale= max(array_column($totalSales->all(), 'total'));
+            $totalSales = sizeof($totalSales);
+        }
+
         return view('home' , compact('totalPrice', 'sales', 'totalSales' ,'highestSale'));
     }
 }

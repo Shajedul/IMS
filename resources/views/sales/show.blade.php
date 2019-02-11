@@ -9,7 +9,7 @@
             </a>
         </div>
         <h1 class="form-group">Sale ID: {{$sale->id}} </h1>
-        <h1 class="form-group">Sale ID: {{App\Customer::find($sale->customer_id)->name}} </h1>
+        <h1 class="form-group">Customer Name: {{App\Customer::find($sale->customer_id)->name}} </h1>
         <table class="table">
             <thead>
             <tr>
