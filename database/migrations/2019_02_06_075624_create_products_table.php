@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->integer('unit_id');
             $table->float('price');
             $table->float('quantity');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->integer('supplier_id');
             $table->timestamps();
         });
