@@ -5,7 +5,7 @@
         <div class="form-group">
             <label for="add-new-product">Add New Product</label>
             <a href="/products/create" class="btn btn-info" id="add-new-product">
-                +
+                    +
             </a>
         </div>
         <div class="form-group">

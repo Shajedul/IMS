@@ -116,8 +116,8 @@
 
     <script>
         $(document).ready(function(){
-            $('#hidden_form_unit').slideUp();
-            $('#hidden_form_type').slideUp();
+            $('#hidden_form_unit').hide();
+            $('#hidden_form_type').hide();
             $('#add-unit').click(function(){
                 $('#hidden_form_unit').slideToggle();
             });

@@ -70,5 +70,31 @@ class Product extends Model
     {
         return $this->hasMany(Product::class);
     }
+    public static function sendProductSearchResult($request)
+    {
+        $searchedProducts = Product::where('name', 'LIKE',  '%' .$request['productName']. '%')->get();
+        if ($searchedProducts==null)
+        {
+            return $products =null;
+        }
+        //dd($searchedProducts);
+        $i =0;
+        foreach ($searchedProducts as $product)
+        {
+            $products[$i] =[
+                'id' => $product->id,
+                'name' => $product->name,
+                'productType' => ProductType::find($product->product_type_id)->name,
+                'unit' => Unit::find($product->unit_id)->name,
+                'supplier' => Supplier::find($product->supplier_id)->name,
+                'price' => $product->price,
+                'stock' =>$product->quantity
+            ];
+            $i++;
+
+        }
+        return $products;
+
+    }
 
 }
