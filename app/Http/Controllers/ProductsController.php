@@ -14,6 +14,7 @@ class ProductsController extends Controller
 {
     public function index ()
     {
+
         $products = Product::all();
         $i =0;
         //dd(Unit::find(1));
@@ -40,10 +41,15 @@ class ProductsController extends Controller
     }
     public function store(Request $request)
     {
+        if ($request['productName']!=null) {
+            $data=Product::sendProductSearchResult($request);
+            return response()->json(['products'=> $data], 200);
+        }
         $product = new Product();
         $product->addProducts($request);
         return redirect('products');
     }
+    
     public function edit(Product $product)
     {
         $product_types = productType::all('id' , 'name');
@@ -51,10 +57,12 @@ class ProductsController extends Controller
         $suppliers = Supplier::all('id' , 'name');
         return view('products.addProducts' , compact('suppliers' , 'units' , 'product_types', 'product'));
     }
+    
     public  function update(Product $product , Request $request)
     {
         //return $request;
         $product->editProduct($product, $request);
+        return redirect('/products');
     }
     public function destroy(Product $product)
     {
