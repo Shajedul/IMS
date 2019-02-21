@@ -41,7 +41,7 @@ class ProductsController extends Controller
     }
     public function store(Request $request)
     {
-        if ($request['productName']!=null) {
+        if ($request->has('productName')) {
             $data=Product::sendProductSearchResult($request);
             return response()->json(['products'=> $data], 200);
         }

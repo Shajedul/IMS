@@ -72,12 +72,21 @@ class Product extends Model
     }
     public static function sendProductSearchResult($request)
     {
-        $searchedProducts = Product::where('name', 'LIKE',  '%' .$request['productName']. '%')->get();
-        if ($searchedProducts==null)
+        $products[]=null;
+        if ($request['productName']==null)
         {
-            return $products =null;
+            //dd('i have been accessed');
+            $searchedProducts = Product::all();
         }
-        //dd($searchedProducts);
+        else
+        {
+            $searchedProducts = Product::where('name', 'LIKE',  '%' .$request['productName']. '%')->get();
+
+        }
+/*        if ($searchedProducts==null)
+        {
+            return $products[]=null;
+        }*/
         $i =0;
         foreach ($searchedProducts as $product)
         {
