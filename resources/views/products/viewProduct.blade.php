@@ -69,7 +69,6 @@
                         dataType: 'JSON',
                         success: function (data)
                         {
-                            console.log('i have been accessed');
                             $('#product_table tbody tr').hide();
                             for(let i=0 ;i< data.products.length; i++)
                             {
