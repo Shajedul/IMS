@@ -9,13 +9,15 @@
             </a>
         </div>
     <div class="container">
-        <table class="table">
+        <table class="table" id="data">
             <thead>
             <tr>
                 <th>Name</th>
                 <th>Phone</th>
                 <th>Email</th>
                 <th>Address</th>
+                <th>Delete</th>
+                <th>Edit</th>
             </tr>
             </thead>
             <tbody>
@@ -38,9 +40,16 @@
                         <button type="submit" class="btn btn btn-info">Edit</button>
                     </form>
                 </td>
+
             </tr>
             @endforeach
             </tbody>
         </table>
     </div>
+    </div>
+    <script >
+        $(document).ready( function () {
+            $('#data').DataTable();
+        });
+    </script>
 @endsection

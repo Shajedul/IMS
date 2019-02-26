@@ -8,8 +8,8 @@
                 +
             </a>
         </div>
-        <div class="form-group">
-            <input type="text" name="name" id="search">
+        <div class="form-group w-25">
+            <input class="form-control" type="text" name="name" id="search" placeholder="search for products">
         </div>
         <table class="table" id="product_table">
             <thead>
@@ -59,18 +59,16 @@
 
                 var name = $("#search").val();
                 var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-                if (('#search')!='')
-                {
+
                     $.ajax({
                         url: '/products',
-                        type: 'POST',
+                        type: 'post',
                         data: { _token: CSRF_TOKEN,
                             productName : name
                         },
                         dataType: 'JSON',
                         success: function (data)
                         {
-                            console.log('i have been accessed');
                             $('#product_table tbody tr').hide();
                             for(let i=0 ;i< data.products.length; i++)
                             {
@@ -107,11 +105,8 @@
                         }
                     });
 
-                }
-                else
-                {
-                    $( "#product_table" ).refresh();
-                }
+
+
 
 
 
