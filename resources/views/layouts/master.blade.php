@@ -17,6 +17,7 @@
 
   <!-- Custom styles for this template-->
   <link href="{{asset('theme/css/sb-admin-2.min.css')}}" rel="stylesheet">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
 </head>
 
@@ -516,7 +517,7 @@
                   dataType: 'JSON',
                   success: function (data)
                   {
-                      $('#product_table tbody tr').hide();
+                      $('#product_table tbody tr').remove();
                       for(let i=0 ;i< data.products.length; i++)
                       {
                           //console.log(data.products[i].name);
