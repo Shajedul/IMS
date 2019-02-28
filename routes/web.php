@@ -28,7 +28,9 @@ Route::resource('/units', 'UnitsController');
 Route::resource('/types', 'TypesController');
 Route::resource('/sale' , 'SaleController');
 Route::post('/sale/ajax' , 'SaleController@addToCart');
-
+});
+Route::get('/test', function (){
+    return view('layouts.master');
 });
 
 /*
