@@ -17,6 +17,29 @@
 
   <!-- Custom styles for this template-->
   <link href="{{asset('theme/css/sb-admin-2.min.css')}}" rel="stylesheet">
+
+
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="{{asset('theme/vendor/jquery/jquery.min.js')}}"></script>
+  <script src="{{asset('theme/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="{{asset('theme/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src=" {{asset('theme/js/sb-admin-2.min.js')}}"></script>
+
+  <!-- Page level plugins -->
+  <script src=" {{asset('theme/vendor/chart.js/Chart.min.js')}}"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="{{asset("theme/js/demo/chart-area-demo.js")}}"></script>
+  <script src="{{asset("theme/js/demo/chart-pie-demo.js")}}"></script>
+
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
 </head>
@@ -417,22 +440,7 @@
     </div>
   </div>
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="{{asset('theme/vendor/jquery/jquery.min.js')}}"></script>
-  <script src="{{asset('theme/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
-  <!-- Core plugin JavaScript-->
-  <script src="{{asset('theme/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src=" {{asset('theme/js/sb-admin-2.min.js')}}"></script>
-
-  <!-- Page level plugins -->
-  <script src=" {{asset('theme/vendor/chart.js/Chart.min.js')}}"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="{{asset("theme/js/demo/chart-area-demo.js")}}"></script>
-  <script src="{{asset("theme/js/demo/chart-pie-demo.js")}}"></script>
 
 
 </body>
