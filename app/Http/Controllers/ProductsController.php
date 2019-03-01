@@ -27,7 +27,7 @@ class ProductsController extends Controller
         }
 
         //dd($product_type);
-        return view('layouts.master', compact('products') , $product_type);
+        return view('products.viewProduct', compact('products') , $product_type);
     }
     public function create()
     {
