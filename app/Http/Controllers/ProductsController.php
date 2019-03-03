@@ -16,6 +16,7 @@ class ProductsController extends Controller
     {
 
         $products = Product::all();
+        //some work
         $i =0;
         //dd(Unit::find(1));
         //dd($products);
