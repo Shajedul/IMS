@@ -18,11 +18,12 @@
   <!-- Custom styles for this template-->
   <link href="{{asset('theme/css/sb-admin-2.min.css')}}" rel="stylesheet">
 
+    <script src="{{ asset('js/app.js') }}" ></script>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-
-    <!-- Bootstrap core JavaScript-->
+{{--    <!-- Bootstrap core JavaScript-->
     <script src="{{asset('theme/vendor/jquery/jquery.min.js')}}"></script>
-    <script src="{{asset('theme/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('theme/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>--}}
 
 
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
