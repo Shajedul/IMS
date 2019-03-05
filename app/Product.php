@@ -3,14 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use app\Product_type;
-use Illuminate\Http\Request;
 
 class Product extends Model
 {
     public function product_type()
     {
-        return $this->belongsTo(ProductType::class);
+        return $this->belongsTo(productType::class);
     }
 
     public function unit()
