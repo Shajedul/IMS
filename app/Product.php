@@ -3,14 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use app\Product_type;
-use Illuminate\Http\Request;
 
 class Product extends Model
 {
     public function product_type()
     {
-        return $this->belongsTo(ProductType::class);
+        return $this->belongsTo(productType::class);
     }
 
     public function unit()
@@ -93,7 +91,7 @@ class Product extends Model
             $products[$i] =[
                 'id' => $product->id,
                 'name' => $product->name,
-                'productType' => ProductType::find($product->product_type_id)->name,
+                'productType' => productType::find($product->product_type_id)->name,
                 'unit' => Unit::find($product->unit_id)->name,
                 'supplier' => Supplier::find($product->supplier_id)->name,
                 'price' => $product->price,
