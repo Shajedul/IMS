@@ -23,12 +23,14 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::resource('/customers', 'CustomersController');
 Route::resource('/products', 'ProductsController');
-Route::resource('/suppliers', 'SuppliersController');
+Route::resource('/suppliers', 'suppliersController');
 Route::resource('/units', 'UnitsController');
 Route::resource('/types', 'TypesController');
 Route::resource('/sale' , 'SaleController');
 Route::post('/sale/ajax' , 'SaleController@addToCart');
-
+});
+Route::get('/test', function (){
+    return view('layouts.master');
 });
 
 /*
