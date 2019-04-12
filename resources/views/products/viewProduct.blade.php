@@ -69,11 +69,11 @@
                         dataType: 'JSON',
                         success: function (data)
                         {
-                             new Noty({
+                             /*new Noty({
                                 type: 'success',
                                 layout:'topRight',
                                 text: 'Found the following products'
-                            }).show()
+                            }).show()*/
                             $('#product_table tbody tr').hide();
                             for(let i=0 ;i< data.products.length; i++)
                             {
