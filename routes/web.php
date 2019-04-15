@@ -25,8 +25,6 @@ Route::prefix('/admin')->group(function(){
     Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
 });
 
-
-
 Route::group(['middleware' => 'auth'], function () {
 
 Route::resource('/customers', 'CustomersController');

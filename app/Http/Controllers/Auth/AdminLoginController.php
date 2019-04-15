@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Auth;
 
 class AdminLoginController extends Controller
 {
@@ -41,9 +44,18 @@ class AdminLoginController extends Controller
 
         return view('auth.adminLogin');
     }
-    public function login()
+    public function login(Request $request)
     {
-        dd('show login form');
+        $request->validate([
+            'email' => 'email|required',
+            'password' => 'required|min:6'
+        ]);
+
+        if(Auth::guard('admin')->attempt(['email' => $request->email , 'password' =>$request->password]))
+        {
+            return redirect(route('home'));
+        }
+
     }
     public function logout()
     {
