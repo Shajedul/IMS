@@ -9,7 +9,16 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Admin extends Authenticatable
 {
     use Notifiable;
+    protected $guard ='admin';
 
+    /**
+     * Get the guard's value
+     **/
+
+    public function getGuard()
+    {
+        return $this->guard;
+    }
     /**
      * The attributes that are mass assignable.
      *

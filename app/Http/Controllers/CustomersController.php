@@ -11,12 +11,18 @@ class CustomersController extends Controller
 {
     public function __construct()
     {
-       $this->middleware('auth:admin');
+       $this->middleware('auth:admin,web');
     }
     public function index()
     {
-        $customers = Customer::all();
-        return view('Customers.viewCustomers', compact('customers'));
+        $user = Auth::user();
+        if($user->can('viewCustomer' , Customer::class)) {
+            $customers = Customer::all();
+            return view('Customers.viewCustomers', compact('customers'));
+        }
+
+        return abort(403, 'You do not have permission to access this page. Get the FUCK OUT.');
+
     }
     public function create()
     {

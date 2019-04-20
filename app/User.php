@@ -9,12 +9,23 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
+    protected $guard = 'web';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
+
+
+    /**
+     * Get the guard's value
+     **/
+
+    public function getGuard()
+    {
+        return $this->guard;
+    }
     protected $fillable = [
         'name', 'email', 'password',
     ];
