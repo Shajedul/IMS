@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Supplier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class suppliersController extends Controller
 {
@@ -41,10 +42,18 @@ class suppliersController extends Controller
     }
     public function edit(Supplier $supplier)
     {
+        if (Gate::denies('authorizedAdmin'))
+        {
+            abort(403 , 'You do not have permission to perform this action');
+        }
         return view('supplier.addSupplier' , compact('supplier'));
     }
     public function update(Supplier $supplier , Request $request)
     {
+        if (Gate::denies('authorizedAdmin'))
+        {
+            abort(403 , 'You do not have permission to perform this action');
+        }
         $request->validate([
             'name' => 'required',
             'phone' => 'required',
@@ -59,6 +68,10 @@ class suppliersController extends Controller
     }
     public function destroy(Supplier $supplier)
     {
+        if (Gate::denies('authorizedAdmin'))
+        {
+            abort(403 , 'You do not have permission to perform this action');
+        }
         $supplier->delete();
         return redirect('/suppliers');
     }

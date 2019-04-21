@@ -6,6 +6,7 @@ use App\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use function Sodium\compare;
+use Illuminate\Support\Facades\Gate;
 
 class CustomersController extends Controller
 {
@@ -15,17 +16,25 @@ class CustomersController extends Controller
     }
     public function index()
     {
-        $user = Auth::user();
+        /*$user = Auth::user();
         if($user->can('viewCustomer' , Customer::class)) {
             $customers = Customer::all();
             return view('Customers.viewCustomers', compact('customers'));
+        }*/
+        if (Gate::denies('authorizedAdmin'))
+        {
+            abort(403 , 'You do not have permission to perform this action');
         }
-
-        return abort(403, 'You do not have permission to access this page. Get the FUCK OUT.');
+        $customers = Customer::all();
+        return view('Customers.viewCustomers', compact('customers'));
 
     }
     public function create()
     {
+        if (Gate::denies('authorizedAdmin'))
+        {
+            abort(403 , 'You do not have permission to perform this action');
+        }
         $customer= null;
         return view('Customers.addCustomers' , compact('customer'));
     }
@@ -35,17 +44,27 @@ class CustomersController extends Controller
     }
     public function store(Request $request)
     {
+
+
         $customer = new Customer();
         $customer->addCustomer($request);
         return redirect('/customers');
     }
     public function update(Customer $customer)
     {
+        if (Gate::denies('authorizedAdmin'))
+        {
+            abort(403 , 'You do not have permission to perform this action');
+        }
         $customer->updateCustomer();
         return redirect('/customers');
     }
     public function destroy(Customer $customer)
     {
+        if (Gate::denies('authorizedAdmin'))
+        {
+            abort(403 , 'You do not have permission to perform this action');
+        }
         $customer->deleteCustomer();
         return redirect('/customers');
     }

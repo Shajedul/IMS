@@ -9,6 +9,7 @@ use App\Unit;
 use function GuzzleHttp\Promise\all;
 use http\Exception\InvalidArgumentException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ProductsController extends Controller
 {
@@ -52,6 +53,10 @@ class ProductsController extends Controller
     
     public function edit(Product $product)
     {
+        if (Gate::denies('authorizedAdmin'))
+        {
+            abort(403 , 'You do not have permission to perform this action');
+        }
         $product_types = productType::all('id' , 'name');
         $units = Unit::all('id' , 'name');
         $suppliers = Supplier::all('id' , 'name');
@@ -60,12 +65,20 @@ class ProductsController extends Controller
     
     public  function update(Product $product , Request $request)
     {
+        if (Gate::denies('authorizedAdmin'))
+        {
+            abort(403 , 'You do not have permission to perform this action');
+        }
         //return $request;
         $product->editProduct($product, $request);
         return redirect('/products');
     }
     public function destroy(Product $product)
     {
+        if (Gate::denies('authorizedAdmin'))
+        {
+            abort(403 , 'You do not have permission to perform this action');
+        }
         //return $product;
         $product->deleteProduct();
         return redirect('/products');
