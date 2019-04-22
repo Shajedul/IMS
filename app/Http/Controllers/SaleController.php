@@ -14,10 +14,7 @@ class SaleController extends Controller
 {
     public function index()
     {
-        if (Gate::denies('authorizedAdmin'))
-        {
-            abort(403 , 'You do not have permission to perform this action');
-        }
+
         $sales = Sale::all();
         return view('sales.viewSale' , compact('sales'));
 
@@ -34,10 +31,7 @@ class SaleController extends Controller
     }
     public function create()
     {
-        if (Gate::denies('authorizedAdmin'))
-        {
-            abort(403 , 'You do not have permission to perform this action');
-        }
+
         $products = Product::all();
         $customers = Customer::all();
         return view ('sales.sale' , compact('customers' , 'products') );
@@ -50,10 +44,6 @@ class SaleController extends Controller
             $unit->name = $request['quantity'];
             $unit->save();
         }*/
-        if (Gate::denies('authorizedAdmin'))
-        {
-            abort(403 , 'You do not have permission to perform this action');
-        }
         $sale = new Sale();
         $invoice = new Invoice();
         $sale_id =$sale->storeSale($request);
